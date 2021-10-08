@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  nest-first:
+    container_name: nest-first
+    build:
+      context: .
+      target: development
+    ports:
+      - 3006:3006
+    environment:
+      - NODE_ENV=dev
+    restart: always
+    volumes:
+      - '.:/var/www/app'
+      - /var/www/app/node_modules
+    working_dir: '/var/www/app'
+    command: yarn start:dev
