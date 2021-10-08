@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { TaskStatus } from './task-status.enum';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { threadId } from 'worker_threads';
 import { GetTasksFilterDto } from './dto/get-task-filter.dto';
 import { Task } from './task.entity';
 import { TaskRepository } from './task.repository';
@@ -31,7 +30,6 @@ export class TasksService {
   }
 
   async deleteTaskById(id: string): Promise<void> {
-    // const deleted = await this.tasksRepository.delete(id);
     const deleted = await this.tasksRepository.delete(id);
     console.log(deleted);
 
